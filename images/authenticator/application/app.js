@@ -48,7 +48,6 @@ function dbLog(user, uri, method, illegal, ip) {
       if(err) {
         return console.error('error running query', err);
       }
-      console.log(result);
       done();
     });
   });
@@ -69,7 +68,6 @@ function sameUserPolicy(headers) {
     return true;
   }
   if (uri[2] && uri[2] != user) {
-    console.log(user, 'tried to', method, 'to', uri);
     dbLog(user, headers['x-original-uri'], method,'true',ip);
     return false;
   }
@@ -79,8 +77,6 @@ function sameUserPolicy(headers) {
 
 var authCache = {};
 app.get('/auth', function(req, res, next) {
-  console.log(req.headers);
-  console.log(req.body);
   if (!sameUserPolicy(req.headers)) {
     res.status(FAILURE).end();
     return;
@@ -97,7 +93,6 @@ app.get('/auth', function(req, res, next) {
     var country = components.pop();
     var user = components.join([separator = '_']);
     username = user + '@' + country + '.ibm.com';
-    console.log('Action from', username);
     req.body = {username:username, password:password};
     passport.authenticate('ldapauth', function(err, user, info) {
       if (user) {
@@ -105,7 +100,6 @@ app.get('/auth', function(req, res, next) {
         dbLog(req.headers['x-original-user'], 'ldap://bluepages.ibm.com/', 'LDAP', 'false', req.headers['x-original-addr']);
         res.status(SUCCESS).end();
       } else {
-        console.log('Invalid');
         dbLog(req.headers['x-original-user'], 'ldap://bluepages.ibm.com/', 'LDAP', 'true', req.headers['x-original-addr']);
         res.status(FAILURE).end();
       }
