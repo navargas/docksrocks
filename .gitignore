@@ -1,0 +1,5 @@
+volumes/postgres
+volumes/webserver/ssl
+volumes/registry
+images/authenticator/application/node_modules/
+*.swp

@@ -1,0 +1,28 @@
+webserver:
+  build: /docksrocks/images/webserver
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - /docksrocks/volumes/webserver/ssl/:/ssl/
+    - /docksrocks/volumes/webserver/www/:/www/
+  links:
+    - registry
+    - authenticator
+authenticator:
+  build: /docksrocks/images/authenticator
+  links:
+    - accesslog
+registry:
+  image: docker.io/distribution/registry:latest
+  volumes:
+    - /docksrocks/volumes/registry/:/var/lib/registry/
+  environment:
+    - POSTGRES_PASSWORD=postgresslocalpassword
+accesslog:
+  image: postgres:9.4.0
+  environment:
+    - PGDATA=/var/lib/postgresql/data/pgdata
+    - POSTGRES_PASSWORD=postgresslocalpassword
+  volumes:
+    - /docksrocks/volumes/postgres/:/var/lib/postgresql/data/pgdata
