@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Docks.Rocks</title>
+  </head>
+  <body>
+<pre>
+Welcome!
+
+We have upgraded to V2 and the old login system has been replaced!
+
+Now docks.rocks uses your IBM Intranet ID for username and password.
+To sign into docks.rocks with your docker client, place your country
+abbreviation at the end of your Notes shortname, separated by an
+underscore.
+
+For example, if your email is "mclean@us.ibm.com" your docks.rocks
+username will be "mclean_us"
+
+  docker login docks.rocks
+  username: mclean_us
+  password: this1smYpassw!
+  email: [this can be left blank, just press enter]
+
+docks.rocks now requires that images are tagged with your username
+before being uploaded. If you have an image named "nginx" run:
+
+  docker tag nginx docks.rocks/mclean_us/nginx
+  docker push docks.rocks/mclean_us/nginx
+
+You cannot upload/modify an image with a username that does not
+match your own.
+
+The following images have been migrated from the V1 docks.rocks
+
+  docks.rocks/secureblu
+  docks.rocks/dashrstudio2
+  docks.rocks/cdsbuild-files
+  docks.rocks/db2demo
+  docks.rocks/webserver-flockerdemo
+  docks.rocks/grafana
+  docks.rocks/cdsbuild
+  docks.rocks/elastalert
+  docks.rocks/informix
+  docks.rocks/db2-expressc
+  docks.rocks/db2-with-backup
+  docks.rocks/elk
+  docks.rocks/informix-new
+  docks.rocks/dashrstudio
+  docks.rocks/rmapp
+  docks.rocks/db2-resmgr-olympia
+  docks.rocks/olympia
+  docks.rocks/rmagent
+  docks.rocks/secureblu
+</pre>
+  </body>
+</html>
