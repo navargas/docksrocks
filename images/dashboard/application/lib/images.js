@@ -9,7 +9,7 @@ exports.getArray = function(callback) {
   child_process.execFile('/application/bin/list_images', function(err, out, stderr) {
     if (process.env.DEV) {
       err = null;
-      out = '["testImage1", "docks.rocks/testImage2", "test3/is/a/test", "wow", "thoseallbrown", ""]';
+      out = '["testImage1", "docks.rocks/testImage2", "test3/is/a/test", "wo-w", "thoseallbrown", ""]';
     }
     if (err) {
       console.log(err, stderr);

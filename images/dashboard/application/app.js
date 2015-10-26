@@ -36,7 +36,7 @@ app.get('/login', function(req, res) {
   res.render('noauth', {layout: 'index'});
 });
 
-app.get(/^\/images\/(\w+)(?:\.\.(\w+))?$/, function(req, res) { 
+app.get('/images/*', function(req, res) {
   res.render('image', {layout: 'index', color:'blue', name:'not found'});
 });
 
