@@ -9,10 +9,18 @@ webserver:
   links:
     - registry
     - authenticator
+    - dashboard
 authenticator:
   build: /docksrocks/images/authenticator
   links:
     - accesslog
+dashboard:
+  build: /docksrocks/images/dashboard
+  volumes:
+    - /docksrocks/volumes/registry/:/var/lib/registry/:ro
+  links:
+    - accesslog
+    - authenticator
 registry:
   image: docker.io/distribution/registry:latest
   volumes:

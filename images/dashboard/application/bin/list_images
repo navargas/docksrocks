@@ -1,0 +1,7 @@
+echo [
+find /var/lib/registry/docker/registry/v2/repositories/ -name '_manifests' | \
+sed 's|_manifests||' | \
+awk -F/ 'NF > 1 { print  "\"" $(NF - 2) "/" $(NF - 1) "\","; }' | \
+sed 's|repositories/||g'
+echo '""'
+echo ]

@@ -1,0 +1,80 @@
+      <div id="updates" style="display:none;">
+          <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+            <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+              <h2 class="mdl-card__title-text mdl-color-text--white">Updates</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+              There are no updates at this time.
+            </div>
+          </div>
+      </div>
+      <div id="alias" style="display:none;">
+          <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <div class="mdl-card__title" style="width:100%">
+              <h2 class="mdl-card__title-text">Password Alias</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              You must be signed in to create a password alias
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a href="/login" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                SIGN IN
+              </a>
+            </div>
+          </div>
+      </div>
+      <div id="images" style="display:none;">
+          {{#each images}}
+          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--{{this.color}}-300">
+                <h2 class="mdl-card__title-text">{{this.name}}</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="{{this.more}}" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a>
+              </div>
+            </div>
+            <div class="demo-separator mdl-cell--1-col"></div>
+          </div>
+          {{/each}}
+      </div>
+      <div id="index" style="display:none;">
+          <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <div class="mdl-card__title" style="width:100%">
+              <h2 class="mdl-card__title-text">Welcome</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              Docks.rocks is an internal docker repository for IBMers. You can sign in with your intranet ID and password
+              and begin uploading and sharing docker images.
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a href="/login" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                SIGN IN
+              </a>
+            </div>
+          </div>
+          <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+            <div class="mdl-card__title">
+              Activity over time
+            </div>
+            <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
+              <use xlink:href="#chart"/>
+            </svg>
+          </div>
+          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">Updates</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                There are no updates at this time.
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a onclick="showUpdate()" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a>
+              </div>
+            </div>
+            <div class="demo-separator mdl-cell--1-col"></div>
+          </div>
+      </div>
