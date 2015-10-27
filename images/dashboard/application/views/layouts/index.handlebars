@@ -90,6 +90,8 @@
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
               {{#if email}}
               <li class="mdl-menu__item"><i class="material-icons">exit_to_app</i>sign out</li>
+              {{else}}
+              <li class="mdl-menu__item"><i class="material-icons">account_circle</i><a href='/signin'>sign in</a></li>
               {{/if}}
             </ul>
           </div>

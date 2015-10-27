@@ -12,6 +12,7 @@ var conString = "postgres://postgres:postgresslocalpassword@accesslog/";
 
 var app = express();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser());
 app.engine('handlebars', handlebarsExpress());
 app.set('view engine', 'handlebars');
@@ -32,8 +33,13 @@ app.get('/', function(req, res) {
                         images: IMAGE_CACHE});
 });
 
-app.get('/login', function(req, res) {
+app.get('/signin', function(req, res) {
   res.render('noauth', {layout: 'index'});
+});
+
+app.post('/token', function(req, res) {
+  console.log(req.headers, req.body);
+  res.redirect('/');
 });
 
 app.get('/images/*', function(req, res) {
