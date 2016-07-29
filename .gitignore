@@ -4,3 +4,4 @@ volumes/registry
 images/authenticator/application/node_modules/
 images/dashboard/application/node_modules/
 *.swp
+*.swo

@@ -75,6 +75,26 @@ function sameUserPolicy(headers) {
   return true;
 }
 
+app.get('/emailauth', function(req, res, next) {
+  if (req.body.email && req.body.password) {
+    req.body = {username:req.body.email, password:req.body.password};
+    passport.authenticate('ldapauth', function(err, user, info) {
+      if (user) {
+        authCache[req.headers.authorization] = true;
+        dbLog(req.headers['x-original-user'], 'ldap://bluepages.ibm.com/', 'LDAP', 'false', req.headers['x-original-addr']);
+        res.status(SUCCESS).end();
+      } else {
+        dbLog(req.headers['x-original-user'], 'ldap://bluepages.ibm.com/', 'LDAP', 'true', req.headers['x-original-addr']);
+        res.status(FAILURE).end();
+      }
+    })(req, res, next);
+  } else {
+    res.append('WWW-Authenticate', 'Basic');
+    res.status(FAILURE).end();
+    return;
+  }
+});
+
 var authCache = {};
 app.get('/auth', function(req, res, next) {
   if (!sameUserPolicy(req.headers)) {

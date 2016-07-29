@@ -19,6 +19,7 @@
     "cookie-parser": "~1.4.0",
     "express-handlebars": "~2.0.1",
     "express-partials": "~0.3.0",
-    "seed-random": "~2.2.0"
+    "seed-random": "~2.2.0",
+    "request": "~2.65.0"
   }
 }

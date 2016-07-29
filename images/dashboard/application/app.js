@@ -6,6 +6,7 @@ var partials = require('express-partials');
 var bodyParser = require('body-parser');
 var child_process = require('child_process');
 var images = require('./lib/images.js');
+var request = require('request');
 var pg = require('pg');
 
 var conString = "postgres://postgres:postgresslocalpassword@accesslog/";
@@ -39,7 +40,14 @@ app.get('/signin', function(req, res) {
 
 app.post('/token', function(req, res) {
   console.log(req.headers, req.body);
-  res.redirect('/');
+  request.get(
+    'http://' + req.body.username + ':' + req.body.password + '@authenticator/auth',
+    {},
+    function (error, response, body) {
+      console.log('sc:', response.statusCode);
+      res.redirect('/');
+    }
+  );
 });
 
 app.get('/images/*', function(req, res) {
